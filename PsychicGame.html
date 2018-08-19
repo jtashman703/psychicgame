@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title> Guesss The Letter Game</title>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Mystical Psychic Guessing Game</title>
+
+
+
+
+
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous">
+            </script>
+
+    </head>
+
+    <body>
+
+        <div class="container">
+            <div class="center">
+                <div class="wrapper">
+
+                    <h3>Won</h3>
+
+                    <span id="won"></span>
+
+                    <h3>Lost</h3>
+
+                    <span id="lost"></span>
+
+                    <p>Guesses Remaining...
+                        <span id="attempts"></span>
+                    </p>
+
+                    <p>Letters Already Guessed</p>
+
+                    <span id="playerGuess"></span>
+
+                    <h1>Guess the Random Letter A-Z</h1>
+
+                    <h3>You have 10 guesses!</h3>
+                </div>
+            </div>
+            </container>
+
+            <script src="assets/js/script.js"></script>
+
+
+
+            <script type="text/javascript">
+
+
+               
+                var won = 0;
+                var lost = 0;
+                var attempts = 10;
+                var usedArray = [];
+                var ranLetter = ranLetter;
+                var letters = "a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z,"
+
+                
+                ranLetter = letters[Math.floor(Math.random() * letters.length)];
+                console.log(ranLetter);
+
+                
+                function jsGuess() {
+                    ranLetter = letters[Math.floor(Math.random() * letters.length)];
+                    console.log(ranLetter);
+
+                }
+
+
+                document.onkeyup = function (event) {
+                    var playerGuess = event.key;
+
+                   
+                    if (playerGuess === ranLetter) {
+                        won++;
+                        attempts = 10;
+                        usedArray = [];
+                        alert("You Won!")
+
+                    }
+
+                   
+                    jsGuess();
+                    if (playerGuess !== ranLetter) {
+                        attempts--;
+
+                    }
+
+                    
+                    if (attempts == 0) {
+                        lost++;
+                        usedArray = []
+                        attempts = 10;
+                        alert("You Lost!")
+                    }
+
+                    if (usedArray.indexOf(playerGuess) >= 0) {
+
+                    } else {
+                      
+                        usedArray.push(playerGuess);
+                        document.getElementById('playerGuess').innerHTML = usedArray;
+                        console.log(usedArray);
+
+                    }
+                  
+                    document.getElementById('won').innerHTML = won;
+                    document.getElementById('lost').innerHTML = lost;
+                    document.getElementById('attempts').innerHTML = attempts;
+
+                }
+            </script>
+</head>
+
+
+
+
+
+
+</body>
+
+</html>
